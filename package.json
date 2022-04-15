@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/kirillkozlovskyi/User-CRM/issues"
   },
-  "homepage": "https://github.com/kirillkozlovskyi/User-CRM#readme"
+  "homepage": "https://github.com/kirillkozlovskyi/User-CRM#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
