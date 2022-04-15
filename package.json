@@ -1,0 +1,23 @@
+{
+  "name": "user-crm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirillkozlovskyi/User-CRM.git"
+  },
+  "keywords": [
+    "Angular",
+    "Express"
+  ],
+  "author": "kirillkozlovskyi@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirillkozlovskyi/User-CRM/issues"
+  },
+  "homepage": "https://github.com/kirillkozlovskyi/User-CRM#readme"
+}
