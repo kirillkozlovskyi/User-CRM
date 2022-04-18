@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const keys = require('../config/keys')
-
+const errorHandler = require('../utils/errorHandler')
 
 module.exports.login = async function (req, res) {
     const candidate = await User.findOne({email: req.body.email});
@@ -16,7 +16,6 @@ module.exports.login = async function (req, res) {
                 id: candidate._id,
             }, keys.jwt, {expiresIn: 60 * 60});
             res.status(200).json({token: `Bearer ${token}`})
-            // generate token
         } else {
             res.status(401).json({message: 'Password did not match'})
         }
@@ -35,6 +34,6 @@ module.exports.register = async function (req, res) {
         try {
             await user.save();
             res.status(201).json({massage: 'User created!', user})
-        } catch (e) { res.status(400).json({massage: e.massage}) }
+        } catch (e) { errorHandler(res, e) }
     }
 }
