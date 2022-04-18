@@ -1,5 +1,5 @@
 const express = require('express');
-const controllers = require('../contrillers/analytics');
+const controllers = require('../controllers/analytics');
 const router = express.Router();
 
 router.get('/overview', controllers.overview);

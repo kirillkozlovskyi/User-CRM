@@ -1,5 +1,5 @@
 const express = require('express');
-const controllers = require('../contrillers/order');
+const controllers = require('../controllers/order');
 const router = express.Router();
 
 router.post('/', controllers.getAll)

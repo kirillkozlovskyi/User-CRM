@@ -1,5 +1,5 @@
 const express = require('express');
-const controllers = require('../contrillers/position');
+const controllers = require('../controllers/position');
 const router = express.Router();
 
 router.get('/:categoryId', controllers.getByCategoryId)
