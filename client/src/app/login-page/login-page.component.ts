@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../shared/services/auth.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {MaterialService} from "../shared/classes/material.service";
 
 @Component({
   selector: 'app-login-page',
@@ -38,9 +39,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.form.disable();
     this.aSub = this.auth.login(this.form.value).subscribe((data) => {
       this.router.navigate(['/overview'])
-      console.log('login success');
     }, (error) => {
-      console.warn(error.message);
+      MaterialService.toast(error.error.message)
       this.form.enable();
     });
   }

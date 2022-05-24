@@ -7,7 +7,7 @@ const errorHandler = require('../utils/errorHandler')
 module.exports.login = async function (req, res) {
     const candidate = await User.findOne({email: req.body.email});
     if (!candidate) {
-        res.status(404).json({massage: 'User with this email not found'})
+        res.status(404).json({message: 'User with this email not found'})
     } else {
         const passwordResult = bcrypt.compareSync(req.body.password, candidate.password)
         if (passwordResult) {
