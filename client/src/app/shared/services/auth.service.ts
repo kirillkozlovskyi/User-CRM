@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Login} from "../interfaces/user.interface";
+import {User} from "../interfaces/user.interface";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
@@ -22,7 +22,7 @@ export class AuthService {
   private _token: String | null =  null;
   constructor(private http: HttpClient) {
   }
-  login(user: Login): Observable<{ token: string }> {
+  login(user: User): Observable<{ token: string }> {
     return this.http.post<{ token: string }>('/api/auth/login', user).pipe(
       tap(
         ({token}) => {
@@ -31,7 +31,9 @@ export class AuthService {
       ),
     );
   }
-  register() {}
+  register(user: User): Observable<User> {
+    return this.http.post<User>('/api/auth/register', user);
+  }
 
   logout() {
     this.token = null;
