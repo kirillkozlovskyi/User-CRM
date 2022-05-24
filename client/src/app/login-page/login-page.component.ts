@@ -24,10 +24,13 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     })
     this.route.queryParams.subscribe((params: Params) => {
       if(params['register']) {
-
+        MaterialService.toast('Enter to application')
       }
       else if (params['accessDenied']) {
-        // TODO add message "autorisation before app used"
+        MaterialService.toast('Authorization to application')
+      }
+      else if (params['sessionFailed']) {
+        MaterialService.toast('Please, enter to application')
       }
     });
   }
