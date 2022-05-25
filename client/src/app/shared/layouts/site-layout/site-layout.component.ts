@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-site-layout',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteLayoutComponent implements OnInit {
 
-  constructor() { }
+  links = [
+    {url: '/overview', name: 'Overview'},
+    {url: '/analytics', name: 'Analytics'},
+    {url: '/history', name: 'History'},
+    {url: '/order', name: 'Add order'},
+    {url: '/categories', name: 'Categories'},
+  ]
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
+  logout(event: Event) {
+    event.preventDefault();
+    this.auth.logout();
+    this.router.navigate(['/login']);
 
+  }
 }
