@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {MaterialService} from "../../classes/material.service";
 
 @Component({
   selector: 'app-site-layout',
   templateUrl: './site-layout.component.html',
   styleUrls: ['./site-layout.component.scss']
 })
-export class SiteLayoutComponent implements OnInit {
-
+export class SiteLayoutComponent implements OnInit, AfterViewInit {
+  // @ts-ignore
+  @ViewChild('floatingBtn') floatingBtnRef: ElementRef;
   links = [
     {url: '/overview', name: 'Overview'},
     {url: '/analytics', name: 'Analytics'},
@@ -20,6 +22,10 @@ export class SiteLayoutComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngAfterViewInit() {
+    MaterialService.floatingActionBtn(this.floatingBtnRef)
+  }
+
   logout(event: Event) {
     event.preventDefault();
     this.auth.logout();
